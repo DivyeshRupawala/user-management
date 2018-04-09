@@ -1,0 +1,14 @@
+{
+	"userList": [
+		{
+			"id" : 0,
+			"firstName" : "Test",
+			"lastName" : "xyz",
+			"emailId" : "xyz@gmail.com",
+			"gender" : "Male"
+		}
+		
+	],	
+	"errors": [],
+	"notificationList": []
+}
