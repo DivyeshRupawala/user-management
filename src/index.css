@@ -39,12 +39,16 @@ body {
 }
 
 .center-panel {
-  margin: 20px 0 20px 0;
+  margin: 20px;
 }
 
 .center-panel label{
   width : 100px;
   text-align: left;
+}
+
+.center-panel table{
+  width: 100%;
 }
 
 .center-panel th,td{

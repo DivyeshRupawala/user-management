@@ -4,9 +4,15 @@ import './index.css';
 import RouterMapping from './RouterMapping'
 import registerServiceWorker from './registerServiceWorker';
 //import sampleData from './initialState'
-import { createStore} from 'redux'
+import { createStore, applyMiddleware} from 'redux'
 import appReducer from './reducer/User'
 import { Provider } from 'react-redux'
+
+import createSagaMiddleware from 'redux-saga'
+import mySaga from './sagas/Sagas'
+
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware();
 
 const initialState = {
 	"userList": [
@@ -23,7 +29,10 @@ const initialState = {
 	"notificationList": []
 };
 
-const store = createStore(appReducer, initialState);
+const store = createStore(appReducer, initialState, applyMiddleware(sagaMiddleware));
+
+// then run the saga
+sagaMiddleware.run(mySaga)
 
 Window.store = store;
 

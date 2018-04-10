@@ -5,8 +5,7 @@ import { addUser, editUser } from '../../action/actions'
 
 const mapStateToProps = (state, props) => 
 	({
-		user : props.routeParams.id ?  state.userList.filter(data => data.id == props.routeParams.id) : [],
-		history : props.history
+		user : props.routeParams.id ?  state.userList.filter(data => data.id == props.routeParams.id) : []		
 	})
 
 const mapDispatchToProps = dispatch => 

@@ -8,7 +8,7 @@ const mapStateToProps = (state, props) =>
 		userList : state.userList
 	})
 
-const mapDispatchToProps = dispatch => 
+const mapDispatchToProps = (dispatch, subscribe) => 
 	({
 		onRemoveUser(id) {
 			dispatch(
