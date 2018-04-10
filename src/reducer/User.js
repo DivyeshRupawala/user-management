@@ -7,6 +7,17 @@ export const userList = (state=[], action) => {
 	      return [...state, action.payload]
 	    case C.REMOVE_USER :
 	      return state.filter(user => user.id !== action.payload)
+	    case C.EDIT_USER :
+	      return state.map(user => {
+	      		if (user.id === action.payload.id) {
+	      			let obj = Object.assign({}, action.payload);
+	      			return obj;
+	      		} else {
+	      			return user;
+	      		}	      	 
+	      })
+	    case C.FETCH_USER :
+	      return state	 		 
 	    default:
 	      return state
 	  }
@@ -15,9 +26,7 @@ export const userList = (state=[], action) => {
 export const errors = (state=[], action) => {
 	switch(action.type) {
 	    case C.ADD_USER :	      
-	      return [...state, action.payload]
-	    case C.REMOVE_USER :
-	      return state.filter(user => user.id !== action.payload)
+	      return [...state, action.payload]	   
 	    default:
 	      return state
 	  }

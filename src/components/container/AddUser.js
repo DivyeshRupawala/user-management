@@ -1,18 +1,24 @@
 import AddUser from '../ui/AddUser'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import { addUser } from '../../action/actions'
+import { addUser, editUser } from '../../action/actions'
 
 const mapStateToProps = (state, props) => 
 	({
-		
+		user : props.routeParams.id ?  state.userList.filter(data => data.id == props.routeParams.id) : [],
+		history : props.history
 	})
 
 const mapDispatchToProps = dispatch => 
 	({
-		onAddUser({firstName,lastName,emailId,gender}) {
+		onAddUser({id, firstName,lastName,emailId,gender}) {
 			dispatch(
-				addUser(firstName, lastName, emailId, gender)
+				addUser(id, firstName, lastName, emailId, gender)
+			)
+		},
+		onEditUser({id, firstName,lastName,emailId,gender}) {
+			dispatch(
+				editUser(id, firstName, lastName, emailId, gender)
 			)
 		}
 		

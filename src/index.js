@@ -11,7 +11,7 @@ import { Provider } from 'react-redux'
 const initialState = {
 	"userList": [
 		{
-			"id" : 0,
+			"id" : 15,
 			"firstName" : "Test",
 			"lastName" : "xyz",
 			"emailId" : "xyz@gmail.com",
@@ -22,8 +22,6 @@ const initialState = {
 	"errors": [],
 	"notificationList": []
 };
-
-console.log(`This is Sample data ${initialState}`);
 
 const store = createStore(appReducer, initialState);
 

@@ -1,11 +1,28 @@
 import C from './constants'
-import fetch from 'isomorphic-fetch'
 
-export function addUser(firstName, lastName, emailId, gender) {
-
+export function addUser(id, firstName, lastName, emailId, gender) {
     return {
         type: C.ADD_USER,
-        payload: {firstName,lastName,emailId,gender}
+        payload: {id, firstName,lastName,emailId,gender}
     }
+}
 
+export const editUser = (id, firstName, lastName, emailId, gender) => {
+	return {
+		type : C.EDIT_USER,
+		payload : {id, firstName,lastName,emailId,gender}
+	}
+}
+
+export const removeUser = (id) => {
+	return {
+		type: C.REMOVE_USER,
+		payload: id
+	}
+}
+
+export const fetchUser = (id) => {
+	return {
+		type: C.FETCH_USER
+	}
 }

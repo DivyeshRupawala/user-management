@@ -1,18 +1,44 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { Button } from 'reactstrap';
-import { Label, PageHeader, Panel } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
 
-const AddUser = ({onAddUser=f=>f}) => {
-	let _firstName, _lastName, _emailId, _gender;
+const AddUser = ({user, history, onAddUser=f=>f, onEditUser=f=>f}) => {
+	let _firstName, _lastName, _emailId, _gender, _id=0;
+
+	if (user && user[0]) {
+		_id = user[0].id;
+		_firstName = user[0].firstName;
+		_lastName = user[0].lastName;
+		_emailId = user[0].emailId;
+		_gender = user[0].gender;
+	}
 
 	const onClickAddUser = () => {
-		console.log("Test : "+_firstName.value+_lastName.value+_emailId.value+_gender)
-		onAddUser({			
-			"firstName" : _firstName.value,
-			"lastName" : _lastName.value,
-			"emailId" : _emailId.value,
-			"gender" : _gender
-		})
+		//console.log("Test : "+_firstName.value+_lastName.value+_emailId.value+_gender)
+		if (_id > 0) {
+			onEditUser({
+				"id" : _id,	
+				"firstName" : _firstName.value,
+				"lastName" : _lastName.value,
+				"emailId" : _emailId.value,
+				"gender" : _gender
+			})	
+		} else {
+			onAddUser({
+				"id" : Math.floor(Math.random() * 10),	
+				"firstName" : _firstName.value,
+				"lastName" : _lastName.value,
+				"emailId" : _emailId.value,
+				"gender" : _gender
+			})	
+		}
+
+		window.location = "#/userList"		
+	}
+
+	const onGenderChange = (value) => {
+		//console.log(" Gender "+value);
+		_gender = value;
 	}
 
 	return (	
@@ -27,7 +53,8 @@ const AddUser = ({onAddUser=f=>f}) => {
 			    		<input
 			    			ref={input => _firstName = input} 
 			    			id="firstName" 
-			    			type="text" />
+			    			type="text"			    			
+			    			defaultValue={_firstName}/>
 			    	</div>
 
 			    	<div>
@@ -35,7 +62,8 @@ const AddUser = ({onAddUser=f=>f}) => {
 			    		<input 
 			    			ref={input => _lastName = input} 
 			    			id="lastName" 
-			    			type="text" />
+			    			type="text" 
+			    			defaultValue={_lastName}/>
 			    	</div>
 
 			    	<div>
@@ -43,13 +71,23 @@ const AddUser = ({onAddUser=f=>f}) => {
 			    		<input
 			    			ref={input => _emailId = input}  
 			    			id="email" 
-			    			type="email" />
+			    			type="email" 
+			    			defaultValue={_emailId}/>
 			    	</div>
 
-			    	<div>
-			    		<label htmlFor="gender"> Gender : &nbsp;</label>
-			    		<input id="male" type="radio" name="gender"/> Male
-			    		<input id="female" type="radio" name="gender"/> Female
+			    	<div><label htmlFor="gender"> Gender : &nbsp;</label>
+			    		<input			    			 
+			    			type="radio" 
+			    			name="gender" 
+			    			value="Male" 
+			    			onChange={event => onGenderChange('Male')}
+			    			defaultChecked={_gender === 'Male'}/> Male
+			    		<input 
+			    			type="radio" 
+			    			name="gender" 
+			    			value="Female" 
+			    			onChange={event => onGenderChange('Female')}
+			    			defaultChecked={_gender === 'Female'}/> Female
 			    	</div>
 			    	<Button color="primary" onClick={onClickAddUser}>Submit</Button>
 			    </Panel.Body>

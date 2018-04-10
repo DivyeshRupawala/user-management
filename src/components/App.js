@@ -12,7 +12,11 @@ class App extends Component {
         <Header />
 
         {/* Routing Section Changing every time*/}
-        {this.props.children}
+        <div className="center-panel">
+          <center>
+            {this.props.children}
+          </center>
+        </div>       
 
         <Footer />        
       </div>

@@ -38,6 +38,21 @@ body {
   width: 100%;
 }
 
+.center-panel {
+  margin: 20px 0 20px 0;
+}
+
+.center-panel label{
+  width : 100px;
+  text-align: left;
+}
+
+.center-panel th,td{
+  padding: 5px;
+  text-align: center;
+}
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
