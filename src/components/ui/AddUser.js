@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'reactstrap';
-import { Panel } from 'react-bootstrap';
 import InputWithLabel from '../../commonComponent/inputWithLabel'
+import PanelWithHeader from '../../commonComponent/panelWithHeader'
 
 const AddUser = ({user, history, onAddUser=f=>f, onEditUser=f=>f}) => {
 	let _firstName, _lastName, _emailId, _gender, _id=0;
@@ -51,35 +51,28 @@ const AddUser = ({user, history, onAddUser=f=>f, onEditUser=f=>f}) => {
 		}
 	}
 
-	return (	
-		<div>
-			<Panel bsStyle="info">
-			    <Panel.Heading>
-			      <Panel.Title componentClass="h3">User Form</Panel.Title>
-			    </Panel.Heading>
-			    <Panel.Body>
-			    	<InputWithLabel label="First Name" type="text" id={FIRST_NAME_ID} defaultVal={_firstName} onChangeValue={onChangeValue}/>
-			    	<InputWithLabel label="Last Name" type="text" id={LAST_NAME_ID} defaultVal={_lastName} onChangeValue={onChangeValue}/>
-			    	<InputWithLabel label="Email" type="text" id={EMAIL_ID} defaultVal={_emailId} onChangeValue={onChangeValue}/>			    	
+	return (		
+		<PanelWithHeader title="Add User">			
+	    	<InputWithLabel label="First Name" type="text" id={FIRST_NAME_ID} defaultVal={_firstName} onChangeValue={onChangeValue}/>
+	    	<InputWithLabel label="Last Name" type="text" id={LAST_NAME_ID} defaultVal={_lastName} onChangeValue={onChangeValue}/>
+	    	<InputWithLabel label="Email" type="text" id={EMAIL_ID} defaultVal={_emailId} onChangeValue={onChangeValue}/>			    	
 
-			    	<div><label htmlFor="gender"> Gender : &nbsp;</label>
-			    		<input			    			 
-			    			type="radio" 
-			    			name="gender" 
-			    			value="Male" 
-			    			onChange={event => onGenderChange('Male')}
-			    			defaultChecked={_gender === 'Male'}/> Male
-			    		<input 
-			    			type="radio" 
-			    			name="gender" 
-			    			value="Female" 
-			    			onChange={event => onGenderChange('Female')}
-			    			defaultChecked={_gender === 'Female'}/> Female
-			    	</div>
-			    	<Button color="primary" onClick={onClickAddUser}>Submit</Button>
-			    </Panel.Body>
-		 	</Panel>			
-		</div>
+	    	<div><label htmlFor="gender"> Gender : &nbsp;</label>
+	    		<input			    			 
+	    			type="radio" 
+	    			name="gender" 
+	    			value="Male" 
+	    			onChange={event => onGenderChange('Male')}
+	    			defaultChecked={_gender === 'Male'}/> Male
+	    		<input 
+	    			type="radio" 
+	    			name="gender" 
+	    			value="Female" 
+	    			onChange={event => onGenderChange('Female')}
+	    			defaultChecked={_gender === 'Female'}/> Female
+	    	</div>
+	    	<Button color="primary" onClick={onClickAddUser}>Submit</Button>
+		</PanelWithHeader>
 	)
 }
 

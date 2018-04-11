@@ -26,3 +26,10 @@ export const fetchUser = (id) => {
 		type: C.FETCH_USER
 	}
 }
+
+export const addUserData = (id, userId, title, body) => {
+	return {
+		type : C.ADD_USER_DATA,
+		payload : {fetching : true, listObj : {id, userId, title, body}}
+	}
+}

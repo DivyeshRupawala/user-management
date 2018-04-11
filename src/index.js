@@ -1,13 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import './index.css';
 import RouterMapping from './RouterMapping'
 import registerServiceWorker from './registerServiceWorker';
-//import sampleData from './initialState'
 import { createStore, applyMiddleware} from 'redux'
-import appReducer from './reducer/User'
+import appReducer from './reducer/index'
 import { Provider } from 'react-redux'
-
 import createSagaMiddleware from 'redux-saga'
 import mySaga from './sagas/Sagas'
 
@@ -26,7 +24,18 @@ const initialState = {
 		
 	],	
 	"errors": [],
-	"notificationList": []
+	"notificationList": [],
+	"userData" : {
+		fetching : false,
+		list : [
+			{	
+				"id": 1,
+			    "userId": 1,		    
+			    "title": "to provide or to reject the blind are welcome option to find",
+			    "body": "And it takes suscipit follow accepted lightly with reprehenderit discomfort may be the entire nostrum of the things that happens is that they are extremely"
+			}
+		]
+	}
 };
 
 const store = createStore(appReducer, initialState, applyMiddleware(sagaMiddleware));
@@ -36,7 +45,7 @@ sagaMiddleware.run(mySaga)
 
 Window.store = store;
 
-ReactDOM.render(
+render(
 	<Provider store={store}>
 		<RouterMapping />
 	</Provider>, document.getElementById('root'));

@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import PanelWithHeader from '../../commonComponent/panelWithHeader'
 
-const UserList = ({userList, onRemoveUser=f=>f}) => {
+const UserDataList = ({userDataList, onRemoveUser=f=>f}) => {
 
-	const userData = userList;
+	const userData = userDataList;
 	
 	const removeUser = (id) => {		
 		onRemoveUser(id);		
@@ -13,20 +13,18 @@ const UserList = ({userList, onRemoveUser=f=>f}) => {
 		    	 <table>
 				  <thead>
 				  <tr>
-				     <th>First Name</th>
-				     <th>Last Name</th>
-				     <th>Email</th>
-				     <th>Gender</th>
+				     <th>User Id</th>
+				     <th>Title</th>
+				     <th>Body</th>
 				     <th>Action</th>
 				  </tr>
 				  </thead>
 				  <tbody>
 					  {userData.map((data, i) =>
 		                    <tr key={i}>
-						      <td>{data.firstName}</td>
-						      <td>{data.lastName}</td>
-						      <td>{data.emailId}</td>
-						      <td>{data.gender}</td>
+						      <td>{data.userId}</td>
+						      <td>{data.title}</td>
+						      <td>{data.body}</td>						      
 						      <td> <a onClick={() => removeUser(data.id)}>Remove </a>
 						      	   <a href={'#addUser/'+data.id}>Edit </a>
 						      </td>
@@ -39,4 +37,4 @@ const UserList = ({userList, onRemoveUser=f=>f}) => {
 	)
 }
 	
-export default UserList;	
+export default UserDataList;	
