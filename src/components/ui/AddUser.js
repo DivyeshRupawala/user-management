@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import InputWithLabel from '../../commonComponent/inputWithLabel'
 import PanelWithHeader from '../../commonComponent/panelWithHeader'
 
-const AddUser = ({user, history, onAddUser=f=>f, onEditUser=f=>f}) => {
+const AddUser = ({user, history, onAddUser=f=>f, onEditUser=f=>f, onShowModal=f=>f}) => {
 	let _firstName, _lastName, _emailId, _gender, _id=0;
 
 	const FIRST_NAME_ID = "firstName";
@@ -18,7 +18,8 @@ const AddUser = ({user, history, onAddUser=f=>f, onEditUser=f=>f}) => {
 		_gender = user[0].gender;
 	}
 
-	const onClickAddUser = () => {		
+	const onClickAddUser = () => {
+		//onShowModal("Success", "Record has been added Success fully", "OK", "Cancel", true);
 		if (_id > 0) {
 			onEditUser(onAddUser(getObject (_id)));	
 		} else {
@@ -42,9 +43,9 @@ const AddUser = ({user, history, onAddUser=f=>f, onEditUser=f=>f}) => {
 
 	const onChangeValue = (event, id) => {		
 		let value = event.currentTarget.value;
-		if (id == FIRST_NAME_ID) {
+		if (id === FIRST_NAME_ID) {
 			_firstName = value;			
-		} else if (id == LAST_NAME_ID) {
+		} else if (id === LAST_NAME_ID) {
 			_lastName = value;
 		} else {
 			_emailId = value;

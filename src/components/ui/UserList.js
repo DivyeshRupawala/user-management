@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PanelWithHeader from '../../commonComponent/panelWithHeader'
 
 const UserList = ({userList, onRemoveUser=f=>f}) => {

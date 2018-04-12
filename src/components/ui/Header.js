@@ -9,11 +9,11 @@ const Header = () =>
             <img src={logo} className="App-logo" alt="logo" />
           </Link>
 
-          <div className="menu-panel"> 
+          <div className="menu-panel">
             <Link to='addUserData'>Add User Data</Link>
             <Link to='userDataList'>User Data List</Link>
             <Link to='addUser'>Add User</Link>
-            <Link to='userList'>User List</Link>
+            <Link to='userList'>User List</Link>             
           </div>          
         </header>
 	)

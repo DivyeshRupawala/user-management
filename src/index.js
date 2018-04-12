@@ -35,6 +35,13 @@ const initialState = {
 			    "body": "And it takes suscipit follow accepted lightly with reprehenderit discomfort may be the entire nostrum of the things that happens is that they are extremely"
 			}
 		]
+	},
+	"modalPopup" : {
+		title: "Title", 
+        body:"Body",
+        okButtonName : "Ok", 
+        closeButtonName : "Cancel", 
+        isShow : false
 	}
 };
 
